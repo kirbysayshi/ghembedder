@@ -1,0 +1,25 @@
+{
+  "name": "ghembedder",
+  "description": "Embed any source file (or specific lines) from any public github repo in your page, with no server-side dependencies.",
+  "version": "0.1.0",
+  "homepage": "https://github.com/kirbysayshi/ghembedder",
+  "author": {
+    "name": "Andrew Petersen",
+    "email": "senofpeter@gmail.com",
+    "url": "http://kirbysayshi.github.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/kirbysayshi/ghembedder.git"
+  },
+  "bugs": {
+    "url": "https://github.com/kirbysayshi/ghembedder/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/kirbysayshi/ghembedder/blob/master/LICENSE-MIT"
+    }
+  ],
+  "keywords": []
+}
