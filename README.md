@@ -1,25 +1,25 @@
 # ghembedder
 
-Embed any source file (or specific lines) from any public github repo in your page, with no server-side dependencies.
+Embed any source file (or specific lines) from any public github repo in your page, with no server-side dependencies. Include [google-code-prettify][] (prettyPrint) for pretty colors!
+
+[google-code-prettify]: https://code.google.com/p/google-code-prettify/
 
 ## Getting Started
 
 Download the [production version][min] or the [development version][max].
 
+You may also want `prettify.js` and `prettify.css` from [google-code-prettify][]. No extra configuration is needed to use it, `window.prettyPrintOne` just has to be defined.
+
 [min]: https://raw.github.com/kirbysayshi/ghembedder/master/dist/ghembedder.min.js
 [max]: https://raw.github.com/kirbysayshi/ghembedder/master/dist/ghembedder.js
 
-	<!-- probaby just before body tag... -->
+	<!-- probaby just before closing body tag... -->
 	<script src="path/to/gheembedder.min.js" type="text/javascript"></script>
 
 	<div 
-		data-ghpath="" // required
-		data-ghuserrepo="" // required
-		data-ghlines="" // which lines to display (not specified == all), e.g.: 34-90
-		data-ghannotate="" // display short filename, lines x-X, link to source
-		data-ghlinnos="" // prettyPrint: display line numbers
-		data-ghlang="" // prettyPrint: which language to use for highlighting e.g.: lang-js
-	></div>
+		data-ghuserrepo="jquery/jquery"
+		data-ghpath="src/core.js"
+		data-ghlines="743-768"></div>
 
 	// somewhere after/during DOMReady
 	ghe.autoload(); // requires browser to have EITHER document.querySelectorAll OR jquery 
@@ -28,6 +28,8 @@ Download the [production version][min] or the [development version][max].
 
 	// single specific instance (after page load, for example)
 	ghe.load( document.querySelectorAll('div')[0] ); 
+
+This will load lines 743-768 of src/core.js (jQuery.proxy) from the jquery repo!
 
 ## Documentation
 
@@ -40,6 +42,7 @@ Given a dom node or matching config object, load a Github file. The config objec
 	{
 		path: 'src/ghembedder.js'  // path relative to git repo root
 		,userrepo: 'kirbysayshi/ghembedder' // username/reponame
+		,ref: 'master' // ref id, defaults to master
 		,lineBegin: -1 // include all lines
 		,lineEnd: -1 // include all lines 
 		,el: el // DOM node to embed within 
@@ -50,6 +53,25 @@ Given a dom node or matching config object, load a Github file. The config objec
 	}
    
 ## Examples
+
+All possible `data-*` attributes: 
+
+	<div 
+		data-ghpath="" <!-- required -->
+		data-ghuserrepo="" <!-- required -->
+		data-ghref="" <!-- optionally provide a specific ref, defaults to master -->
+		data-ghlines="" <!-- which lines to display (not specified == all), e.g.: 34-90 -->
+		data-ghannotate="" <!-- display short filename, lines x-X, link to source -->
+		data-ghlinenos="" <!-- prettyPrint: display line numbers -->
+		data-ghlang="" <!-- prettyPrint: which language to use for highlighting e.g.: lang-js -->
+	></div>
+
+Load lines 743-768 from `src/core.js` of the jQuery repo @ 714b8ffd2b28af446fea8f25e369597d7c509cb4
+	<div 
+		data-ghuserrepo="jquery/jquery"
+		data-ghpath="/src/core.js"
+		data-ghref="714b8ffd2b28af446fea8f25e369597d7c509cb4"
+		data-ghlines="743-768"></div>
 
 Load all lines from `src/ghembedder.js`:
 
@@ -64,6 +86,22 @@ Load lines 340-350 from `src/ghembedder.js`:
 		data-ghpath="src/ghembedder.js"
 		data-ghuserrepo="kirbysayshi/ghembedder"
 		data-ghlines="340-350"
+	></div>
+
+load all lines from `src/ghembedder.js`, add annotation:
+
+	<div 
+		data-ghpath="src/ghembedder.js"
+		data-ghuserrepo="kirbysayshi/ghembedder"
+		data-ghannotate="true"
+	></div>
+
+load all lines from `src/ghembedder.js`, use line numbers (requires [google-code-prettify][]:
+
+	<div 
+		data-ghpath="src/ghembedder.js"
+		data-ghuserrepo="kirbysayshi/ghembedder"
+		data-ghlinenos="true"
 	></div>
 
 ## Contributing

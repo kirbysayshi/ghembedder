@@ -282,7 +282,9 @@ ghe._annotation = function( key ){
 ghe._jsonp = function(fileUrl, cbName){
 	var script = document.createElement('script');
 	script.async = true;
-	script.src = fileUrl + '?callback=' + cbName;
+	script.src = fileUrl 
+		+ (fileUrl.indexOf('?') > -1 ? '&' : '?') 
+		+ 'callback=' + cbName;
 	
 	document.getElementsByTagName('head')[0].appendChild(script);
 };
@@ -307,6 +309,7 @@ ghe._parseNode = function(el){
 	return {
 		 path: path
 		,userrepo: el.getAttribute('data-ghuserrepo')
+		,ref: el.getAttribute('data-ghref') || 'master'
 		,lineBegin: start
 		,lineEnd: end
 		,el: el
@@ -339,6 +342,7 @@ ghe.load = function(cfg){
 			+ cfg.userrepo.replace(ghe._rLeadSlash, '')
 			+ '/contents/'
 			+ cfg.path.replace(ghe._rLeadSlash, '')
+			+ '?ref=' + cfg.ref
 		,'ghe._callbacks.' + key
 	);
 };
