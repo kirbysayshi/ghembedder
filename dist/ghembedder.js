@@ -1,4 +1,4 @@
-/*! ghembedder - v0.1.0 - 2012-07-27
+/*! ghembedder - v0.1.0 - 2012-07-29
 * https://github.com/kirbysayshi/ghembedder
 * Copyright (c) 2012 Andrew Petersen; Licensed MIT */
 
@@ -231,8 +231,12 @@ ghe._jsonpCallback = function(key){
 					: lib.linenos;
 			} 
 			
+			// apply an anchor to each line, to be able to link to specifics
 			lines = lines.map(function(l, i){
-				return '<a class="nocode" id="' + lib.fileName + '-L' + (i + lib.lineBegin) + '">' + ( l ? '' : ' ' ) + '</a>' + l;
+				return '<a class="nocode" id="' + lib.fileName + '-L' 
+					+ (i + lib.lineBegin) + '">' 
+					+ ( l ? '' : ' ' ) + '</a>' 
+					+ l;
 			});
 				
 			decoded = lines.join('\n');
@@ -257,7 +261,7 @@ ghe._annotation = function( key ){
 	var  lib = ghe._library[key]
 			,hasLineRange = lib.lineBegin > -1 && lib.lineEnd > -1;
 	
-	return '<div class="ghe-_annotation">' 
+	return '<div class="ghe-annotation">' 
 		+ lib.fileName 
 		+ (hasLineRange 
 			 ? ', lines ' + lib.lineBegin + '-' + lib.lineEnd 
@@ -272,7 +276,9 @@ ghe._annotation = function( key ){
 ghe._jsonp = function(fileUrl, cbName){
 	var script = document.createElement('script');
 	script.async = true;
-	script.src = fileUrl + '?callback=' + cbName;
+	script.src = fileUrl 
+		+ (fileUrl.indexOf('?') > -1 ? '&' : '?') 
+		+ 'callback=' + cbName;
 	
 	document.getElementsByTagName('head')[0].appendChild(script);
 };
@@ -297,6 +303,7 @@ ghe._parseNode = function(el){
 	return {
 		 path: path
 		,userrepo: el.getAttribute('data-ghuserrepo')
+		,ref: el.getAttribute('data-ghref') || 'master'
 		,lineBegin: start
 		,lineEnd: end
 		,el: el
@@ -329,6 +336,7 @@ ghe.load = function(cfg){
 			+ cfg.userrepo.replace(ghe._rLeadSlash, '')
 			+ '/contents/'
 			+ cfg.path.replace(ghe._rLeadSlash, '')
+			+ '?ref=' + cfg.ref
 		,'ghe._callbacks.' + key
 	);
 };
@@ -337,7 +345,7 @@ ghe.load = function(cfg){
 // Look through the DOM for any nodes matching [data-ghpath], and automatically
 // load them as embedded github files.
 ///////////////////////////////////////////////////////////////////////////////
-ghe.autorun = function(){
+ghe.autoload = function(){
 	var nodes; 
 	
 	if( window.jQuery ){
