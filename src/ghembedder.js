@@ -351,7 +351,7 @@ ghe.load = function(cfg){
 // Look through the DOM for any nodes matching [data-ghpath], and automatically
 // load them as embedded github files.
 ///////////////////////////////////////////////////////////////////////////////
-ghe.autorun = function(){
+ghe.autoload = function(){
 	var nodes; 
 	
 	if( window.jQuery ){
