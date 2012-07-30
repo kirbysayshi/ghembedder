@@ -213,12 +213,13 @@ ghe._keygen = function(){
 
 ghe._jsonpCallback = function(key){
 	return ghe._callbacks[key] = function(resp){
-		var lib = ghe._library[key]
-				,linenos = false
-				,hasLineRange = lib.lineBegin > -1 && lib.lineEnd > -1
-				,decoded
-				,lines
-				,nums;
+		var  lib = ghe._library[key]
+			,linenos = false
+			,hasLineRange = lib.lineBegin > -1 && lib.lineEnd > -1
+			,decoded
+			,lines
+			,nums
+			,tabSpace = new Array(lib.tabSize + 1).join(' ');
 		
 		if( resp.data && resp.data.content ){
 			
@@ -242,7 +243,7 @@ ghe._jsonpCallback = function(key){
 				return '<a class="nocode" id="' + lib.fileName + '-L' 
 					+ (i + lib.lineBegin) + '">' 
 					+ ( l ? '' : ' ' ) + '</a>' 
-					+ l;
+					+ l.replace('\t', tabSpace);
 			});
 				
 			decoded = lines.join('\n');
@@ -319,6 +320,7 @@ ghe._parseNode = function(el){
 		,linenos: el.getAttribute('data-ghlinenos')
 		// "true" or ""/non-specified
 		,annotate: el.getAttribute('data-ghannotate')
+		,tabSize: el.getAttribute('data-ghtabsize') || 4
 	};
 };
 

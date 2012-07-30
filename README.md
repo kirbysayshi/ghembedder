@@ -61,6 +61,7 @@ All possible `data-*` attributes:
 		data-ghuserrepo=""		<!-- required, String: username/reponame -->
 		data-ghref=""			<!-- optional, String: provide a specific ref, defaults to master -->
 		data-ghlines=""			<!-- optional, String: which lines to display (not specified == all), e.g.: 34-90 -->
+		data-ghtabsize=""		<!-- optional, Number: how many spaces a tab character should occupy, defaults to 4 -->
 		data-ghannotate=""		<!-- optional, Boolean: Display short filename, lines x-X, link to source -->
 		data-ghlinenos=""		<!-- optional, prettyPrint, Boolean: display line numbers -->
 		data-ghlang=""			<!-- optional, prettyPrint, String: which language to use for highlighting e.g.: lang-js -->
