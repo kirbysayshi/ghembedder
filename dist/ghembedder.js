@@ -49,7 +49,7 @@
  * If the input length is not a multiple of 4, or contains invalid characters
  *   then an DOMException(5) is thrown.
  */
-(function(window) {
+;(function(window) {
 
 var base64 = window.base64 = {};
 base64.PADCHAR = '=';
@@ -185,7 +185,7 @@ if (!window.atob) { window.atob = window.base64.decode; }
 // Begin the actual ghembedder code...
 ///////////////////////////////////////////////////////////////////////////////
 
-(function(exports) {
+;(function(exports) {
 
 var ghe = exports.ghe = {
 	 _apiBase: 'https://api.github.com'
@@ -237,7 +237,7 @@ ghe._jsonpCallback = function(key){
 				return '<a class="nocode" id="' + lib.fileName + '-L' 
 					+ (i + lib.lineBegin) + '">' 
 					+ ( l ? '' : ' ' ) + '</a>' 
-					+ l.replace('\t', tabSpace);
+					+ l.replace(/\t/gi, tabSpace);
 			});
 				
 			decoded = lines.join('\n');
@@ -314,7 +314,7 @@ ghe._parseNode = function(el){
 		,linenos: el.getAttribute('data-ghlinenos')
 		// "true" or ""/non-specified
 		,annotate: el.getAttribute('data-ghannotate')
-		,tabSize: el.getAttribute('data-ghtabsize') || 4
+		,tabSize: parseInt( el.getAttribute('data-ghtabsize'), 10 ) || 4
 	};
 };
 
