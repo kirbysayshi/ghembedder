@@ -45,6 +45,7 @@ Given a DOM node, load a Github file. The DOM node requires a few `data-*` attri
 		,lineEnd: -1							// include all lines 
 		,el: el									// DOM node to embed within 
 		,fileName: 'ghembedder.js'				// filename (used for anchor links internally)
+		,tabSize: 4								// how many spaces a tab should equal
 		,annotate: Boolean						// include link and line numbers at end of embedding
 		,lang: 'lang-js'						// prettyPrint: which language to use for highlighting
 		,linenos: Boolean						// prettyPrint: include line numbers
