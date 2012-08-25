@@ -226,6 +226,11 @@ ghe._jsonpCallback = function(key){
 			lib.data = resp.data;
 			
 			decoded = ghe._decodeContent( resp.data.content );
+			//check if the file is htm(l)
+			if (lib.fileName.match(/.*\.htm[l]*$/)){
+				//replace the tags so that they will be interpreted as text, and not source
+				decoded = decoded.replace(/</g,"&lt;").replace(/>/g,"&gt;");
+			}
 			lines = decoded.split('\n');
 			
 			if( hasLineRange ){
