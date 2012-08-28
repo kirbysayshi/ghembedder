@@ -107,7 +107,15 @@ load all lines from `src/ghembedder.js`, use line numbers (requires [google-code
 	></div>
 
 ## Contributing
-Please don't edit files in the "dist" subdirectory as they are generated via grunt. You'll find source code in the "src" subdirectory!
+Please don't edit files in the "dist" subdirectory as they are generated via grunt. You'll find source code in the "src" subdirectory! 
+
+Install grunt:
+
+`npm install grunt -g`
+
+And then run it to update the `dist` folder:
+
+`grunt`
 
 ## Release History
 
