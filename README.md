@@ -119,6 +119,7 @@ And then run it to update the `dist` folder:
 
 ## Release History
 
+- 0.1.1: Basic html escaping if extension matches `.htm|.html`
 - 0.1.0: initial release
 
 ## License
