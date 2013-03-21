@@ -68,7 +68,8 @@ All possible `data-*` attributes:
 		data-ghlang=""			<!-- optional, prettyPrint, String: which language to use for highlighting e.g.: lang-js -->
 	></div>
 
-Load lines 743-768 from `src/core.js` of the jQuery repo @ 714b8ffd2b28af446fea8f25e369597d7c509cb4
+Load lines 743-768 from `src/core.js` of the jQuery repo `@ 714b8ffd2b28af446fea8f25e369597d7c509cb4`
+
 	<div 
 		data-ghuserrepo="jquery/jquery"
 		data-ghpath="/src/core.js"
