@@ -227,7 +227,7 @@ ghe._jsonpCallback = function(key){
 			
 			decoded = ghe._decodeContent( resp.data.content );
 			//check if the file is htm(l)
-			if (lib.fileName.match(/.*\.htm[l]*$/)){
+			if (lib.fileName.match(/.*\.htm[l]*$/) || lib.lang.match(/html/)){
 				//replace the tags so that they will be interpreted as text, and not source
 				decoded = decoded.replace(/</g,"&lt;").replace(/>/g,"&gt;");
 			}
