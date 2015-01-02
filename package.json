@@ -3,11 +3,7 @@
   "description": "Embed any source file (or specific lines) from any public github repo in your page, with no server-side dependencies.",
   "version": "0.1.1",
   "homepage": "https://github.com/kirbysayshi/ghembedder",
-  "author": {
-    "name": "Andrew Petersen",
-    "email": "senofpeter@gmail.com",
-    "url": "http://kirbysayshi.github.com"
-  },
+  "author": "Andrew Petersen <senofpeter@gmail.com>",
   "repository": {
     "type": "git",
     "url": "git://github.com/kirbysayshi/ghembedder.git"
@@ -15,11 +11,20 @@
   "bugs": {
     "url": "https://github.com/kirbysayshi/ghembedder/issues"
   },
-  "licenses": [
-    {
-      "type": "MIT",
-      "url": "https://github.com/kirbysayshi/ghembedder/blob/master/LICENSE-MIT"
-    }
-  ],
-  "keywords": []
+  "scripts": {
+    "bundle": "browserify --standalone ghembedder -p licensify src/ghembedder.js > dist/ghembedder.js",
+    "dist": "npm run bundle && uglifyjs dist/ghembedder.js --comments '/Modules/' > dist/ghembedder.min.js",
+    "test": "zuul --phantom --ui tape -- test.js",
+    "test-debug": "zuul --local --open --ui tape -- test.js"
+  },
+  "license": "MIT",
+  "keywords": [],
+  "devDependencies": {
+    "browserify": "^8.0.3",
+    "licensify": "^0.2.0",
+    "phantomjs": "^1.9.13",
+    "tape": "^3.0.3",
+    "uglify-js": "^2.4.16",
+    "zuul": "^1.16.3"
+  }
 }

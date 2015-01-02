@@ -108,15 +108,21 @@ load all lines from `src/ghembedder.js`, use line numbers (requires [google-code
 	></div>
 
 ## Contributing
-Please don't edit files in the "dist" subdirectory as they are generated via grunt. You'll find source code in the "src" subdirectory! 
+Please don't edit files in the "dist" subdirectory as they are generated. You'll find source code in the "src" subdirectory! 
 
-Install grunt:
+- `npm install`
 
-`npm install grunt -g`
+To run tests via zuul / phantomjs:
 
-And then run it to update the `dist` folder:
+- `npm test`
 
-`grunt`
+To run tests in an actual browser:
+
+- `npm run test-debug`
+
+To build:
+
+- `npm run dist`
 
 ## Release History
 
@@ -124,14 +130,10 @@ And then run it to update the `dist` folder:
 - 0.1.0: initial release
 
 ## License
-Copyright (c) 2012 Andrew Petersen  
-Licensed under the MIT license.
 
-[base64][] is Copyright (c) 2010 Nick Galbreath
+MIT
 
 ## Thanks
-
-Ben Alman, for [Grunt](https://github.com/cowboy/grunt/).
 
 [google-code-prettify]: https://code.google.com/p/google-code-prettify/
 [min]: https://raw.github.com/kirbysayshi/ghembedder/master/dist/ghembedder.min.js
