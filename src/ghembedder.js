@@ -18,8 +18,6 @@ ghe._keygen = function(){
 
 ghe._jsonpCallback = function(key){
 	return window[key] = function(resp){
-		console.log('a callback!', resp)
-
 		var  lib = ghe._library[key]
 			,linenos = false
 			,hasLineRange = lib.lineBegin > -1 && lib.lineEnd > -1
@@ -33,9 +31,18 @@ ghe._jsonpCallback = function(key){
 			lib.data = resp.data;
 			
 			decoded = ghe._decodeContent( resp.data.content );
-			//check if the file is htm(l)
 			//replace the tags so that they will be interpreted as text, and not source
-			decoded = decoded.replace(/</g,"&lt;").replace(/>/g,"&gt;");
+			decoded = decoded.replace(/[&<>"'`]/g, (function() {
+				var chars = {
+					"&": "&amp;"
+					,"<": "&lt;"
+					,">": "&gt;"
+					,'"': "&quot;"
+					,"'": "&#x27;"
+					,"`": "&#x60;"
+				}
+				return function(match) { return chars[match]; }
+			}()));
 			lines = decoded.split('\n');
 			
 			if( hasLineRange ){

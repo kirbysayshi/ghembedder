@@ -16,6 +16,22 @@ test('accepts a node', function(t) {
   });
 })
 
+test('escapes html entities', function(t) {
+  var el = nodeMaker({
+    ghuserrepo: 'facebook/react',
+    ref: '4e5f5df4f6895ce4753d47b84c5e4ab9288c87ff',
+    ghpath: 'examples/basic-jsx/index.html',
+    ghlines: '1-4'
+  })
+
+  document.body.appendChild(el);
+  ghe.load(el, function(err, library) {
+    t.ifError(err);
+    t.ok(el.innerHTML.match(/&lt;!DOCTYPE html&gt;/), '<!DOCTYPE html> becomes &lt;!DOCTYPE html&gt;');
+    t.end();
+  });
+})
+
 function nodeMaker(data) {
   var el = document.createElement('div');
   Object.keys(data).forEach(function(k) {
