@@ -126,6 +126,7 @@ To build:
 
 ## Release History
 
+- 1.0.0: Remove btoa/atob shim. Always html escape content.
 - 0.1.1: Basic html escaping if extension matches `.htm|.html`
 - 0.1.0: initial release
 
