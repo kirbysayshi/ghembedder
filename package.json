@@ -1,7 +1,7 @@
 {
   "name": "ghembedder",
   "description": "Embed any source file (or specific lines) from any public github repo in your page, with no server-side dependencies.",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "homepage": "https://github.com/kirbysayshi/ghembedder",
   "author": "Andrew Petersen <senofpeter@gmail.com>",
   "main": "src/ghembedder.js",
