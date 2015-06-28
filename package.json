@@ -4,6 +4,7 @@
   "version": "1.0.0",
   "homepage": "https://github.com/kirbysayshi/ghembedder",
   "author": "Andrew Petersen <senofpeter@gmail.com>",
+  "main": "src/ghembedder.js",
   "repository": {
     "type": "git",
     "url": "git://github.com/kirbysayshi/ghembedder.git"
