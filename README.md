@@ -16,26 +16,26 @@ Download the [production version][min] or the [development version][max]. You ma
 		data-ghlines="743-768"></div>
 
 	// somewhere after/during DOMReady
-	ghe.autoload(); // requires browser to have EITHER document.querySelectorAll OR jquery 
+	ghembedder.autoload(); // requires browser to have EITHER document.querySelectorAll OR jquery 
 
 	// OR
 
 	// single specific instance (after page load, for example)
-	ghe.load( document.querySelectorAll('div')[0] ); 
+	ghembedder.load( document.querySelectorAll('div')[0] ); 
 
 This will load lines 743-768 of src/core.js (jQuery.proxy) from the jquery repo!
 
 ## Demo
 
-See [http://jsbin.com/ekises/latest](http://jsbin.com/ekises/latest) for a live working demo.
+See [http://jsbin.com/suyela](http://jsbin.com/suyela) for a live working demo.
 
 ## Documentation
 
-### ghe.autoload()
+### ghembedder.autoload()
 Find, read, and load all DOM nodes that have a `[gh-path]` attribute. Requires `document.querySelectorAll` or `jQuery`.
  
-### ghe.load( cfg || DOMNode )
-Given a DOM node, load a Github file. The DOM node requires a few `data-*` attributes, which are defined in the examples below. Internally, `ghe` turns the node into the following configuration object, which can also be passed to this method:
+### ghembedder.load( cfg || DOMNode )
+Given a DOM node, load a Github file. The DOM node requires a few `data-*` attributes, which are defined in the examples below. Internally, `ghembedder` turns the node into the following configuration object, which can also be passed to this method:
 
 	{
 		path: 'src/ghembedder.js'				// path relative to git repo root
